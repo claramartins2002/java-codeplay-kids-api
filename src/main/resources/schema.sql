@@ -27,6 +27,13 @@ CREATE TABLE tb_aluno (
     FOREIGN KEY (turma_id) REFERENCES tb_turma(id)
 );
 
+-- Tabela tb_jogo
+CREATE TABLE tb_jogo (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    icone VARCHAR(255)
+);
+
 
 -- Tabela tb_atividade
 CREATE TABLE tb_atividade (
@@ -34,9 +41,11 @@ CREATE TABLE tb_atividade (
     nome VARCHAR(255) NOT NULL,
     descricao VARCHAR(255),
     data_criacao VARCHAR(10),
-    prazo VARCHAR(10),
+    data_encerramento VARCHAR(10),
     turma_id BIGINT,
-    FOREIGN KEY (turma_id) REFERENCES tb_turma(id)
+    jogo_id BIGINT,
+    FOREIGN KEY (turma_id) REFERENCES tb_turma(id),
+    FOREIGN KEY (jogo_id) REFERENCES tb_jogo(id)
 );
 
 -- Tabela tb_progresso_atividade

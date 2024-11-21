@@ -9,16 +9,21 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/turma")
 public class TurmaController {
 
     @Autowired
     TurmaService turmaService;
 
-
     @GetMapping("/getByProfessorId/{profId}")
     public Optional<List<Turma>> getByProfessorId(@PathVariable Long profId){
         return turmaService.getByProfessor(profId);
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Turma> getById(@PathVariable Long id){
+        return turmaService.getById(id);
     }
 
     @PostMapping

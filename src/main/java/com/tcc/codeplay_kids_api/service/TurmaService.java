@@ -22,6 +22,10 @@ public class TurmaService {
         return turmaRepository.save(turma);
     }
 
+    public Optional<Turma> getById(Long id) {
+        return turmaRepository.findById(id);
+    }
+
     public Boolean delete(Long idTurma){
         try {
             turmaRepository.deleteById(idTurma);

@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/atividade")
 public class AtividadeController {
 
@@ -30,6 +31,11 @@ public class AtividadeController {
     @DeleteMapping("/{id}")
     public Boolean delete(@PathVariable Long id){
         return atividadeService.delete(id);
+    }
+
+    @GetMapping("/getByProfessor/{professorId}")
+    public List<Atividade> getByProfessor(@PathVariable Long professorId) {
+        return atividadeService.getByProfessorId(professorId);
     }
 
     @GetMapping("/getByTurma/{turmaId}")

@@ -13,7 +13,9 @@ public class Atividade {
     private String nome;
     private String descricao;
     private String dataCriacao;
-    private String prazo;
+    private String dataEncerramento;
     @ManyToOne
     private Turma turma;
+    @ManyToOne
+    private Jogo jogo;
 }

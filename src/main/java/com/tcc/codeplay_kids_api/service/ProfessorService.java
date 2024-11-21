@@ -14,6 +14,10 @@ public class ProfessorService {
 
     public Professor save (Professor professor) { return professorRepository.save(professor);}
 
+    public Optional<Professor> getById(Long id) {
+        return professorRepository.findById(id);
+    }
+
     public Boolean validateLogin(String email, String senha){
 
         Optional<Professor> professorEncontrado = professorRepository.getByEmail(email);

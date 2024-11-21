@@ -10,4 +10,5 @@ import java.util.Optional;
 @Repository
 public interface TurmaRepository extends JpaRepository<Turma, Long> {
     Optional<List<Turma>> getByProfessorId(Long professorId);
+    Turma getById(Long id);
 }
