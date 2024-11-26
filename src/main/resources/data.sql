@@ -55,19 +55,22 @@ INSERT INTO tb_aluno (nome, data_nascimento, foto_url, usuario, senha, turma_id)
 INSERT INTO tb_jogo (nome, icone) VALUES
 ('Quebra-Cabeça', 'https://cdn-icons-png.freepik.com/128/6854/6854549.png'),
 ('Jogo da Memória', 'https://cdn-icons-png.freepik.com/128/9267/9267863.png'),
-('Jogo das Sombras', 'https://cdn-icons-png.freepik.com/128/3418/3418674.png'),
-('Jogo da Matemática', 'https://cdn-icons-png.freepik.com/256/466/466666.png'),
+('Arraste e Solte', 'https://cdn-icons-png.freepik.com/128/3418/3418674.png'),
+('Adição de Números', 'https://cdn-icons-png.freepik.com/256/466/466666.png'),
 ('Palavras Cruzadas', 'https://cdn-icons-png.freepik.com/128/5806/5806552.png'),
-('Caça palavras', 'https://cdn-icons-png.freepik.com/128/1341/1341066.png'),
+('Caça Palavras', 'https://cdn-icons-png.freepik.com/128/1341/1341066.png'),
 ('Formas e Cores', 'https://cdn-icons-png.freepik.com/128/603/603563.png'),
-('Que animal é esse?', 'https://cdn-icons-png.freepik.com/128/1145/1145521.png'),
-('Desenho Livre', 'https://cdn-icons-png.freepik.com/128/4556/4556114.png'),
+('Subtração de Números', 'https://cdn-icons-png.freepik.com/128/1145/1145521.png'),
+('Multiplicação de Números', 'https://cdn-icons-png.freepik.com/128/4556/4556114.png'),
+('Formas Geométricas e Cores', 'https://cdn-icons-png.freepik.com/128/4556/4556114.png'),
+('Divisão de Números', 'https://cdn-icons-png.freepik.com/128/4556/4556114.png'),
 ('Jogo da Contagem', 'https://cdn-icons-png.freepik.com/128/9593/9593042.png');
 
 INSERT INTO tb_atividade (nome, descricao, data_criacao, data_encerramento, turma_id, jogo_id) VALUES
-('Atividade de Português 1', 'Jogo das vogais', '2024-11-20', '2024-11-21', 1, 1),
-('Atividade de Lógica 1', 'Quebra Cabeça', '2024-11-20', '2024-11-22', 1, 3),
-('Atividade de Matemática 1', 'Jogo da soma', '2024-11-15', '2024-11-16', 2, 5),
-('Atividade de Português 2', 'Jogo das Sílabas', '2024-11-10', '2024-11-12', 3, 6);
+('Atividade de Português 1', 'Jogo das vogais', '2024-11-20', '2024-11-26', 1, 3),
+('Atividade de Lógica 1', 'Quebra Cabeça', '2024-11-20', '2024-11-26', 1, 9),
+('Atividade de Palavras Cruzadas', 'Palavras Cruzadas', '2024-11-20', '2024-11-26', 1, 6),
+('Atividade de Matemática 1', 'Jogo da soma', '2024-11-15', '2024-11-24', 2, 5),
+('Atividade de Português 2', 'Jogo das Sílabas', '2024-11-10', '2024-11-24', 3, 6);
 
 

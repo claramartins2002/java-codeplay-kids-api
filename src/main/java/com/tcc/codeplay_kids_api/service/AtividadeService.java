@@ -8,7 +8,10 @@ import com.tcc.codeplay_kids_api.repository.TurmaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +26,9 @@ public class AtividadeService {
 
     @Autowired
     RelatorioAtividadeRepository relatorioAtividadeRepository;
+
+    @Autowired
+    AlunoRepository alunoRepository;
 
     public Atividade save(Atividade atividade){
         return atividadeRepository.save(atividade);
@@ -53,27 +59,42 @@ public class AtividadeService {
 
     }
 
-    public List<Atividade> getPendingByAluno(Aluno aluno){
+    public List<Jogo> getPendingJogosByAlunoId(Long alunoId) {
 
-        List<Atividade> atividadesPendentes = new ArrayList<>();
+        // Lista para armazenar os jogos das atividades pendentes
+        List<Jogo> jogosPendentes = new ArrayList<>();
 
-        //atividades lançadas para a turma do aluno
+        // Buscar o aluno pelo ID
+        Aluno aluno = alunoRepository.findById(alunoId)
+                .orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
+
+        // Buscar atividades da turma do aluno
         Optional<List<Atividade>> atividadesDaTurma = atividadeRepository.getByTurmaId(aluno.getTurma().getId());
 
-        List<RelatorioAtividade> relatoriosAluno = new ArrayList<>();
-
-        //buscar relatorios relacionados a esse aluno, em cada atividade
+        // Verificar as atividades pendentes para o aluno
         atividadesDaTurma.ifPresent(atividades -> atividades.forEach(atividade -> {
-            Optional<List<RelatorioAtividade>> relatorioAlunoAtividade = relatorioAtividadeRepository.getByAtividadeIdAndAlunoId(atividade.getId(), aluno.getId());
 
-            //se não existir relatório, significa que a atividade está pendente para o aluno
-            if(relatorioAlunoAtividade.get().isEmpty()){
-                atividadesPendentes.add(atividade);
+// Define o formato da data de encerramento
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+// Converte a data de encerramento da atividade para LocalDate
+            LocalDate dataEncerramento = LocalDate.parse(atividade.getDataEncerramento(), formatter);
+
+// Obtém a data atual
+            LocalDate dataAtual = LocalDate.now();
+
+// Se a data de encerramento for maior ou igual à data atual, o jogo será exibido
+            if (!dataEncerramento.isBefore(dataAtual)) {
+                Jogo jogo = atividade.getJogo();
+                if (!jogosPendentes.contains(jogo)) {
+                    jogosPendentes.add(jogo);
+                }
             }
         }));
 
-        return atividadesPendentes;
+        return jogosPendentes;
     }
+
 
     public Boolean delete(Long idAtividade){
         try {
