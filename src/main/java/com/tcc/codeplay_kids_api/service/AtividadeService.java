@@ -86,6 +86,7 @@ public class AtividadeService {
 // Se a data de encerramento for maior ou igual à data atual, o jogo será exibido
             if (!dataEncerramento.isBefore(dataAtual)) {
                 Jogo jogo = atividade.getJogo();
+                jogo.setId(atividade.getId());
                 if (!jogosPendentes.contains(jogo)) {
                     jogosPendentes.add(jogo);
                 }
