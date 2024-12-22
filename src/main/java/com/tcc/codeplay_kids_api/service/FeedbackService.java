@@ -33,9 +33,9 @@ public class FeedbackService {
     }
 
     private String avaliarJogoMemoria(RelatorioAtividade relatorio) {
-        if (relatorio.getTentativas() <= 8) {
+        if (relatorio.getTentativas() <= 10) {
             return "Fantástico! Sua memória está afiada.";
-        } else if (relatorio.getTentativas() <= 10) {
+        } else if (relatorio.getTentativas() <= 15) {
             return "Bom trabalho! Continue praticando para melhorar sua memória.";
         } else {
             return "Não desista! Quanto mais você pratica, melhor sua memória fica.";

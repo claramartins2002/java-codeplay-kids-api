@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @Repository
 public interface RelatorioAtividadeRepository extends JpaRepository<RelatorioAtividade, Long> {
+    List<RelatorioAtividade> findByAlunoId(Long alunoId);
 Optional<List<RelatorioAtividade>> getByAtividadeId(Long atividadeId);
 Optional<List<RelatorioAtividade>> getByAlunoId(Long alunoId);
     @Query("SELECT r FROM RelatorioAtividade r WHERE r.aluno.id = :alunoId AND r.atividade.id = :atividadeId")

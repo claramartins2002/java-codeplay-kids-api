@@ -11,7 +11,7 @@ INSERT INTO tb_turma (nome, descricao, professor_id) VALUES
 ('2º ano A', 'Turma de segundo ano, classe A', 2);
 
 INSERT INTO tb_aluno (nome, data_nascimento, foto_url, usuario, senha, turma_id) VALUES
-('Ana Clara', '2014-05-12', 'https://cdn-icons-png.freepik.com/128/8288/8288915.png', 'ana.clara', 'senha123', 1),
+('João Lucas', '2014-05-12', 'https://cdn-icons-png.freepik.com/128/8288/8288915.png', 'joao.lucas', 'senha123', 1),
 ('Lucas Silva', '2014-07-19', 'https://cdn-icons-png.freepik.com/128/10293/10293865.png', 'lucas.silva', 'senha123', 1),
 ('Beatriz Santos', '2014-09-22', 'https://cdn-icons-png.freepik.com/128/10293/10293869.png', 'beatriz.santos', 'senha123', 1),
 ('Pedro Almeida', '2014-02-03', 'https://cdn-icons-png.freepik.com/128/4711/4711037.png', 'pedro.almeida', 'senha123', 1),
@@ -59,17 +59,27 @@ INSERT INTO tb_jogo (nome, icone) VALUES
 ('Adição de Números', 'https://cdn-icons-png.freepik.com/256/466/466666.png'),
 ('Palavras Cruzadas', 'https://cdn-icons-png.freepik.com/128/5806/5806552.png'),
 ('Caça Palavras', 'https://cdn-icons-png.freepik.com/128/1341/1341066.png'),
-('Formas e Cores', 'https://cdn-icons-png.freepik.com/128/603/603563.png'),
-('Subtração de Números', 'https://cdn-icons-png.freepik.com/128/1145/1145521.png'),
-('Multiplicação de Números', 'https://cdn-icons-png.freepik.com/128/4556/4556114.png'),
+('Jogo das Imagens', 'https://cdn-icons-png.freepik.com/128/603/603563.png'),
+('Subtração de Números', 'https://cdn-icons-png.freepik.com/256/466/466666.png'),
+('Multiplicação de Números', 'https://cdn-icons-png.freepik.com/256/466/466666.png'),
 ('Formas Geométricas e Cores', 'https://cdn-icons-png.freepik.com/128/4556/4556114.png'),
-('Divisão de Números', 'https://cdn-icons-png.freepik.com/128/4556/4556114.png'),
+('Divisão de Números', 'https://cdn-icons-png.freepik.com/256/466/466666.png'),
 ('Jogo da Contagem', 'https://cdn-icons-png.freepik.com/128/9593/9593042.png');
 
 INSERT INTO tb_atividade (nome, descricao, data_criacao, data_encerramento, turma_id, jogo_id) VALUES
-('Atividade de Português 1', 'Jogo das vogais', '2024-11-20', '2024-11-26', 1, 3),
-('Atividade de Lógica 1', 'Quebra Cabeça', '2024-11-20', '2024-11-26', 1, 9),
-('Atividade de Palavras Cruzadas', 'Palavras Cruzadas', '2024-11-20', '2024-11-26', 1, 6),
+('Atividade de Português 1', 'Jogo das vogais', '2024-11-20', '2024-12-24', 1, 4),
+('Atividade de Lógica 1', 'Quebra Cabeça', '2024-11-20', '2024-12-24', 1, 6),
+('Atividade de Lógica 1', 'Quebra Cabeça', '2024-11-20', '2024-12-24', 1, 5),
+('Atividade de Lógica 1', 'Quebra Cabeça', '2024-11-20', '2024-12-24', 1, 7),
+('Atividade de Lógica 1', 'Quebra Cabeça', '2024-11-20', '2024-12-24', 1, 8),
+('Atividade de Lógica 1', 'Quebra Cabeça', '2024-11-20', '2024-12-24', 1, 10),
+('Atividade de Lógica 1', 'Quebra Cabeça', '2024-11-20', '2024-12-24', 1, 11),
+('Atividade de Lógica 1', 'Quebra Cabeça', '2024-11-20', '2024-12-24', 1, 9),
+('Atividade de Lógica 1', 'Quebra Cabeça', '2024-11-20', '2024-12-24', 1, 1),
+('Atividade de Lógica 1', 'Quebra Cabeça', '2024-11-20', '2024-12-24', 1, 2),
+('Atividade de Lógica 1', 'Quebra Cabeça', '2024-11-20', '2024-12-24', 1, 3),
+
+('Atividade de Palavras Cruzadas', 'Palavras Cruzadas', '2024-12-04', '2024-12-24', 1, 11),
 ('Atividade de Matemática 1', 'Jogo da soma', '2024-11-15', '2024-11-24', 2, 5),
 ('Atividade de Português 2', 'Jogo das Sílabas', '2024-11-10', '2024-11-24', 3, 6);
 
