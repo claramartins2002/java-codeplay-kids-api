@@ -34,10 +34,10 @@ public class AlunoService {
         }
     }
 
-    public Boolean validateLogin(String user, String senha){
+    public Optional<Aluno> validateLogin(String user, String senha){
 
         Optional<Aluno> alunoEncontrado = alunoRepository.getByUsuarioAndSenha(user, senha);
 
-        return alunoEncontrado.isPresent();
+        return alunoEncontrado;
     }
 }

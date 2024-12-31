@@ -49,13 +49,15 @@ CREATE TABLE tb_atividade (
 );
 
 -- Tabela tb_progresso_atividade
-CREATE TABLE tb_progresso_atividade (
+CREATE TABLE tb_relatorio_atividade (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    data_inicio VARCHAR(10),
-    data_conclusao VARCHAR(10),
+    tentativas VARCHAR(10),
+    acertos VARCHAR(10),
+    erros VARCHAR(10),
     tempo_gasto VARCHAR(50),
     pontuacao DOUBLE,
-    status VARCHAR(50),
+    tipo_atividade VARCHAR(50),
+    feedback VARCHAR(200),
     aluno_id BIGINT,
     atividade_id BIGINT,
     FOREIGN KEY (aluno_id) REFERENCES tb_aluno(id),
