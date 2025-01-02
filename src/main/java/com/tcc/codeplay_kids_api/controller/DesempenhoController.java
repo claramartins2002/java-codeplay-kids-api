@@ -8,6 +8,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/desempenho")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class DesempenhoController {
 
     @Autowired
