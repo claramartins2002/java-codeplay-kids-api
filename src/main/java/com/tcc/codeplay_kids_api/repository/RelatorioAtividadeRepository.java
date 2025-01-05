@@ -16,5 +16,8 @@ Optional<List<RelatorioAtividade>> getByAtividadeId(Long atividadeId);
 Optional<List<RelatorioAtividade>> getByAlunoId(Long alunoId);
     @Query("SELECT r FROM RelatorioAtividade r WHERE r.aluno.id = :alunoId AND r.atividade.id = :atividadeId")
     Optional<RelatorioAtividade> getByAtividadeIdAndAlunoId(@Param("alunoId") Long alunoId, @Param("atividadeId") Long atividadeId);
+    List<RelatorioAtividade> findByNotificadoFalse();
+    @Query("SELECT r FROM RelatorioAtividade r WHERE r.aluno.turma.professor.id = :professorId AND r.notificado = false")
+    List<RelatorioAtividade> findByProfessorIdAndNotificadoFalse(@Param("professorId") Long professorId);
 
 }

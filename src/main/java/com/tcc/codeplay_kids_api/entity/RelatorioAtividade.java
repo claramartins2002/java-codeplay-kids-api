@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.Duration;
+import java.util.Date;
 
 @Entity
 @Data
@@ -25,5 +26,7 @@ public class RelatorioAtividade {
     private Integer erros;
     private String tipoAtividade; // Ex: "Matemática", "Quebra-Cabeça"
     private String feedback;
-
+    @Column(nullable = false) // Garante que o valor não pode ser nulo
+    private Boolean notificado = false; // Valor padrão
+    private String dataConclusao;
 }

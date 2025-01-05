@@ -64,7 +64,8 @@ INSERT INTO tb_jogo (nome, icone) VALUES
 ('Multiplicação de Números', 'https://cdn-icons-png.freepik.com/256/466/466666.png'),
 ('Formas Geométricas e Cores', 'https://cdn-icons-png.freepik.com/128/4556/4556114.png'),
 ('Divisão de Números', 'https://cdn-icons-png.freepik.com/256/466/466666.png'),
-('Jogo da Contagem', 'https://cdn-icons-png.freepik.com/128/9593/9593042.png');
+('Jogo da Contagem', 'https://cdn-icons-png.freepik.com/128/9593/9593042.png'),
+('Relógio', 'https://cdn-icons-png.freepik.com/128/9593/9593042.png');
 
 INSERT INTO tb_atividade (nome, descricao, data_criacao, data_encerramento, turma_id, jogo_id) VALUES
 ('Atividade de Português 1', 'Jogo das vogais', '2025-11-20', '2024-12-24', 1, 4),
@@ -80,7 +81,7 @@ INSERT INTO tb_atividade (nome, descricao, data_criacao, data_encerramento, turm
 ('Atividade de Lógica 1', 'Quebra Cabeça', '2024-11-20', '2025-12-24', 1, 3),
 
 ('Atividade de Palavras Cruzadas', 'Palavras Cruzadas', '2024-12-04', '2025-12-24', 1, 11),
-('Atividade de Matemática 1', 'Jogo da soma', '2024-11-15', '2025-11-24', 2, 5),
-('Atividade de Português 2', 'Jogo das Sílabas', '2024-11-10', '2025-11-24', 3, 6);
+('Atividade de Matemática 1', 'Jogo da soma', '2024-11-15', '2025-11-24', 1, 12),
+('Atividade de Português 2', 'Jogo das Sílabas', '2024-11-10', '2025-11-24', 1, 13);
 
 
