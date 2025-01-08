@@ -17,6 +17,8 @@ public class FeedbackService {
                 return avaliarOperacoesMatematicas(relatorio);
             case "Palavras Cruzadas":
                 return avaliarPalavrasCruzadas(relatorio);
+            case "Relógio":
+                return avaliarJogoRelogio(relatorio);
             default:
                 return "Atividade não reconhecida para feedback.";
         }
@@ -29,6 +31,16 @@ public class FeedbackService {
             return "Bom trabalho! Tente melhorar seu tempo na próxima vez.";
         } else {
             return "Continue praticando! Resolver quebra-cabeças mais rapidamente melhora suas habilidades.";
+        }
+    }
+
+    private String avaliarJogoRelogio(RelatorioAtividade relatorio) {
+        if (relatorio.getPontuacao() >= 7) {
+            return "Excelente! Você consegue dizer qualquer horário do dia";
+        } else if (relatorio.getPontuacao() >= 4) {
+            return "Bom trabalho! Continue olhando as horas para melhorar.";
+        } else {
+            return "Continue praticando! O relógio as vezes pode ser complicado";
         }
     }
 

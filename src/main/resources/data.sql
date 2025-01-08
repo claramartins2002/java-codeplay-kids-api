@@ -59,29 +59,46 @@ INSERT INTO tb_jogo (nome, icone) VALUES
 ('Adição de Números', 'https://cdn-icons-png.freepik.com/256/466/466666.png'),
 ('Palavras Cruzadas', 'https://cdn-icons-png.freepik.com/128/5806/5806552.png'),
 ('Caça Palavras', 'https://cdn-icons-png.freepik.com/128/1341/1341066.png'),
-('Jogo das Imagens', 'https://cdn-icons-png.freepik.com/128/603/603563.png'),
+('Que animal é esse ?', 'https://cdn-icons-png.freepik.com/128/3969/3969722.png'),
 ('Subtração de Números', 'https://cdn-icons-png.freepik.com/256/466/466666.png'),
 ('Multiplicação de Números', 'https://cdn-icons-png.freepik.com/256/466/466666.png'),
-('Formas Geométricas e Cores', 'https://cdn-icons-png.freepik.com/128/4556/4556114.png'),
+('Formas e Cores', 'https://cdn-icons-png.freepik.com/128/603/603563.png'),
 ('Divisão de Números', 'https://cdn-icons-png.freepik.com/256/466/466666.png'),
-('Jogo da Contagem', 'https://cdn-icons-png.freepik.com/128/9593/9593042.png'),
-('Relógio', 'https://cdn-icons-png.freepik.com/128/9593/9593042.png');
+('Que horas são ?', 'https://cdn-icons-png.freepik.com/256/9099/9099610.png'),
+('Jogo da Contagem', 'https://cdn-icons-png.freepik.com/128/9593/9593042.png');
 
-INSERT INTO tb_atividade (nome, descricao, data_criacao, data_encerramento, turma_id, jogo_id) VALUES
-('Atividade de Português 1', 'Jogo das vogais', '2025-11-20', '2024-12-24', 1, 4),
-('Atividade de Lógica 1', 'Quebra Cabeça', '2024-11-20', '2025-12-24', 1, 6),
-('Atividade de Lógica 1', 'Quebra Cabeça', '2024-11-20', '2025-12-24', 1, 5),
-('Atividade de Lógica 1', 'Quebra Cabeça', '2024-11-20', '2025-12-24', 1, 7),
-('Atividade de Lógica 1', 'Quebra Cabeça', '2024-11-20', '2025-12-24', 1, 8),
-('Atividade de Lógica 1', 'Quebra Cabeça', '2024-11-20', '2025-12-24', 1, 10),
-('Atividade de Lógica 1', 'Quebra Cabeça', '2024-11-20', '2025-12-24', 1, 11),
-('Atividade de Lógica 1', 'Quebra Cabeça', '2024-11-20', '2025-12-24', 1, 9),
-('Atividade de Lógica 1', 'Quebra Cabeça', '2024-11-20', '2025-12-24', 1, 1),
-('Atividade de Lógica 1', 'Quebra Cabeça', '2024-11-20', '2025-12-24', 1, 2),
-('Atividade de Lógica 1', 'Quebra Cabeça', '2024-11-20', '2025-12-24', 1, 3),
+INSERT INTO TB_ATIVIDADE (nome, descricao, data_criacao, data_encerramento, turma_id, jogo_id) VALUES
+('Atividade de Quebra-Cabeça', 'Quebra-Cabeça', CURRENT_DATE, '2025-01-10', 1, 1),
+('Atividade de Jogo da Memória', 'Jogo da Memória', CURRENT_DATE, '2025-01-10', 1, 2),
+('Atividade de Arraste e Solte', 'Arraste e Solte', CURRENT_DATE, '2025-01-10', 1, 3),
+('Atividade de Adição de Números', 'Adição de Números', CURRENT_DATE, '2025-01-10', 1, 4),
+('Atividade de Palavras Cruzadas', 'Palavras Cruzadas', CURRENT_DATE, '2025-01-10', 1, 5),
+('Atividade de Caça Palavras', 'Caça Palavras', CURRENT_DATE, '2025-01-10', 1, 6),
+('Atividade de Jogo das Imagens', 'Jogo das Imagens', CURRENT_DATE, '2025-01-10', 1, 7),
+('Atividade de Subtração de Números', 'Subtração de Números', CURRENT_DATE, '2025-01-10', 1, 8),
+('Atividade de Multiplicação de Números', 'Multiplicação de Números', CURRENT_DATE, '2025-01-10', 1, 9),
+('Atividade de Formas Geométricas e Cores', 'Formas Geométricas e Cores', CURRENT_DATE, '2025-01-10', 1, 10),
+('Atividade de Divisão de Números', 'Divisão de Números', CURRENT_DATE, '2025-01-10', 1, 11),
+('Atividade de Que horas são ?', 'Que horas são ?', CURRENT_DATE, '2025-01-10', 1, 12),
+('Atividade de Jogo da Contagem', 'Jogo da Contagem', CURRENT_DATE, '2025-01-10', 1, 13);
 
-('Atividade de Palavras Cruzadas', 'Palavras Cruzadas', '2024-12-04', '2025-12-24', 1, 11),
-('Atividade de Matemática 1', 'Jogo da soma', '2024-11-15', '2025-11-24', 1, 12),
-('Atividade de Português 2', 'Jogo das Sílabas', '2024-11-10', '2025-11-24', 1, 13);
+INSERT INTO TB_RELATORIO_ATIVIDADE (TENTATIVAS, ACERTOS, ERROS, TEMPO_GASTO, PONTUACAO, TIPO_ATIVIDADE, FEEDBACK, ALUNO_ID, ATIVIDADE_ID) VALUES
+(15, 6, 9, 26, 6.0, 'Operações Matemáticas', 'Não desanime! Praticar as operações matemáticas ajudará a melhorar.', 1, 4),
+(15, 7, 8, 22, 8.0, 'Operações Matemáticas', 'Não desanime! Praticar as operações matemáticas ajudará a melhorar.', 1, 8),
+(15, 2, 3, 28, 3.0, 'Operações Matemáticas', 'Não desanime! Praticar as operações matemáticas ajudará a melhorar.', 1, 9),
+(15, 10, 5, 30, 10.0, 'Operações Matemáticas', 'Não desanime! Praticar as operações matemáticas ajudará a melhorar.', 1, 11),
+(15, 5, 2, 60, 2.0, 'Operações Matemáticas', 'Não desanime! Praticar as operações matemáticas ajudará a melhorar.', 2, 4),
+(15, 4, 11, 28, 4.0, 'Operações Matemáticas', 'Não desanime! Praticar as operações matemáticas ajudará a melhorar.', 2, 8),
+(15, 8, 7, 45, 8.0, 'Operações Matemáticas', 'Não desanime! Praticar as operações matemáticas ajudará a melhorar.', 3, 9),
+(15, 5, 8, 28, 5.0, 'Operações Matemáticas', 'Não desanime! Praticar as operações matemáticas ajudará a melhorar.', 3, 11),
+(15, 7, 5, 25, 7.0, 'Operações Matemáticas', 'Não desanime! Praticar as operações matemáticas ajudará a melhorar.', 2, 4),
+(15, 15, 12, 37, 8.0, 'Operações Matemáticas', 'Não desanime! Praticar as operações matemáticas ajudará a melhorar.', 3, 8),
+(NULL, NULL, NULL, 42, NULL, 'Caça Palavras', NULL, 1, 6),
+(NULL, NULL, NULL, 70, NULL, 'Caça Palavras', NULL, 2, 6),
+(NULL, NULL, NULL, 90, NULL, 'Quebra Cabeça', NULL, 3, 1),
+(NULL, NULL, NULL, 90, NULL, 'Quebra Cabeça', NULL, 3, 1),
+(NULL, NULL, NULL, 73, NULL, 'Quebra Cabeça', NULL, 2, 1),
+(0, 0, 10, 34, 0.0, 'Relógio', 'Atividade não reconhecida para feedback.', 1, 12);
+
 
 
