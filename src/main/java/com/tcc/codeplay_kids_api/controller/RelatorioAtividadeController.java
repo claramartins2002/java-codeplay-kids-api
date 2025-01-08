@@ -4,6 +4,7 @@ import com.tcc.codeplay_kids_api.entity.RelatorioAtividade;
 import com.tcc.codeplay_kids_api.service.FeedbackService;
 import com.tcc.codeplay_kids_api.service.RelatorioAtividadeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -46,5 +47,25 @@ public class RelatorioAtividadeController {
     public Optional<List<RelatorioAtividade>> getByAluno(@PathVariable Long alunoId){
         return relatorioAtividadeService.getByAluno(alunoId);
     }
+    @GetMapping("/nao-notificados")
+    public List<RelatorioAtividade> obterNaoNotificados() {
+        List<RelatorioAtividade> relatorios = relatorioAtividadeService.buscarNaoNotificados();
+        return relatorios;
+    }
+    @GetMapping("/marcar-como-notificado/{professorId}")
+    public ResponseEntity<String> marcarComoNotificado(@PathVariable Long professorId){
+        System.out.println("LIMPANDO NOTIFICAÇÕES....");
 
+        try {
+        relatorioAtividadeService.marcarComoNotificadosPorProfessor(professorId);
+
+        return ResponseEntity.status(200).body("Notificações limpas");
+    }
+        catch (Exception e){
+            return ResponseEntity.status(500).body("Erro limpando as notificações"+e);
+        }
+        finally {
+            return null;
+        }
+        }
 }

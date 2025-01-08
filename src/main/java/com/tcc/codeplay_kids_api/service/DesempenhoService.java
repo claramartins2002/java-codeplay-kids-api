@@ -22,8 +22,66 @@ public class DesempenhoService {
     public Map<String, Object> getDesempenhoPorAluno(Long alunoId) {
         List<RelatorioAtividade> relatorios = relatorioAtividadeRepository.findByAlunoId(alunoId);
 
-        return calcularEstatisticas(relatorios);
+        if (relatorios.isEmpty()) {
+            return Collections.singletonMap("mensagem", "Nenhum dado encontrado.");
+        }
+
+        // Mapeamento de tipos de atividades para os valores esperados pelo front-end
+        Map<String, String> tipoAtividadeMap = Map.of(
+                "Caça Palavras", "Português",
+                "Palavras Cruzadas", "Português",
+                "Operações Matemáticas", "Matemática",
+                "Relógio", "Raciocínio Lógico",
+                "Arraste e Solte", "Raciocínio Lógico",
+                "Jogo da Memória", "Raciocínio Lógico",
+                "Quebra-Cabeça", "Raciocínio Lógico"
+        );
+
+        // Agrupamento por tipo consolidado
+        List<Map<String, Object>> desempenho = relatorios.stream()
+                .collect(Collectors.groupingBy(r -> tipoAtividadeMap.getOrDefault(r.getTipoAtividade(), "Outro"), Collectors.toList()))
+                .entrySet()
+                .stream()
+                .filter(entry -> !entry.getKey().equals("Outro")) // Exclui tipos não mapeados
+                .map(entry -> {
+                    String tipo = entry.getKey();
+                    List<RelatorioAtividade> atividades = entry.getValue();
+
+                    // Calcular métricas
+                    List<Double> notas = atividades.stream()
+                            .map(r -> r.getPontuacao() != null ? r.getPontuacao() : 0.0)
+                            .collect(Collectors.toList());
+
+                    List<Double> tempo = atividades.stream()
+                            .map(r -> r.getTempoGasto() != null ? r.getTempoGasto() : 0.0)
+                            .collect(Collectors.toList());
+
+                    double mediaTentativas = atividades.stream()
+                            .filter(r -> r.getTentativas() != null)
+                            .mapToDouble(RelatorioAtividade::getTentativas)
+                            .average()
+                            .orElse(0);
+
+                    double errosTotais = atividades.stream()
+                            .mapToDouble(r -> r.getErros() != null ? r.getErros() : 0)
+                            .sum();
+
+                    double persistenciaEResiliencia = errosTotais > 0 ? mediaTentativas / errosTotais : 10;
+
+                    // Retornar dados consolidados
+                    return Map.of(
+                            "tipo", tipo,
+                            "notas", notas,
+                            "tempo", tempo,
+                            "persistenciaEResiliencia", persistenciaEResiliencia
+                    );
+                })
+                .collect(Collectors.toList());
+
+        return Map.of("desempenho", desempenho);
     }
+
+
 
     public Map<String, Object> getDesempenhoPorTurma(Long turmaId) {
         Optional<List<Aluno>> alunos = alunoRepository.getByTurmaId(turmaId);

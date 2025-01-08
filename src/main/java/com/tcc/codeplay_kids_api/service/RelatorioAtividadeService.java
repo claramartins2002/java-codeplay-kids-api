@@ -7,7 +7,9 @@ import com.tcc.codeplay_kids_api.repository.RelatorioAtividadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +42,7 @@ public class RelatorioAtividadeService {
                     existente.setAcertos(novoRelatorio.getAcertos());
                     existente.setErros(novoRelatorio.getErros());
                     existente.setTentativas(novoRelatorio.getTentativas());
+                    existente.setDataConclusao(LocalDate.now().toString());
                     return relatorioRepository.save(existente);
                 } else {
                     // Retorna o existente se o novo desempenho não for melhor
@@ -49,6 +52,7 @@ public class RelatorioAtividadeService {
                 }
             } else {
                 // Cria um novo registro se não houver um existente
+                novoRelatorio.setDataConclusao(LocalDate.now().toString());
                 return relatorioRepository.save(novoRelatorio);
             }
         }
@@ -96,4 +100,20 @@ public class RelatorioAtividadeService {
     public Optional<RelatorioAtividade> getByAlunoAndAtividade(Long alunoId, Long atividadeId){
         return relatorioAtividadeRepository.getByAtividadeIdAndAlunoId(atividadeId, alunoId);
     }
+
+    public List<RelatorioAtividade> buscarNaoNotificados() {
+        return relatorioAtividadeRepository.findByNotificadoFalse();
+    }
+    public void marcarComoNotificadosPorProfessor(Long professorId) {
+        // Busca os relatórios associados ao professor com o campo 'notificado' como false
+        List<RelatorioAtividade> relatorios = relatorioAtividadeRepository.findByProfessorIdAndNotificadoFalse(professorId);
+
+        // Atualiza o campo 'notificado' para true
+        relatorios.forEach(relatorio -> relatorio.setNotificado(true));
+
+        // Salva as alterações
+        relatorioAtividadeRepository.saveAll(relatorios);
+    }
+
+
 }

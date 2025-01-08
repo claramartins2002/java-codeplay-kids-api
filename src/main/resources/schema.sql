@@ -60,6 +60,8 @@ CREATE TABLE tb_relatorio_atividade (
     feedback VARCHAR(200),
     aluno_id BIGINT,
     atividade_id BIGINT,
+    notificado BOOLEAN DEFAULT FALSE,
+    data_conclusao VARCHAR,
     FOREIGN KEY (aluno_id) REFERENCES tb_aluno(id),
     FOREIGN KEY (atividade_id) REFERENCES tb_atividade(id)
 );

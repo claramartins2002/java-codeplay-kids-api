@@ -18,15 +18,15 @@ public class ProfessorService {
         return professorRepository.findById(id);
     }
 
-    public Boolean validateLogin(String email, String senha){
+    public Optional<Professor> validateLogin(String email, String senha){
 
         Optional<Professor> professorEncontrado = professorRepository.getByEmail(email);
 
         if(professorEncontrado.isPresent()){
             if(professorEncontrado.get().getSenha().equalsIgnoreCase(senha)){
-                return true;
+                return professorEncontrado;
             }
         }
-        return false;
+        return null;
     }
 }
